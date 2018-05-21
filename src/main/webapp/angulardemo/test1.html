@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AngularJS双向数据绑定</title>
+		<script type="text/javascript" src="../js/angular.min.js" ></script>
+	</head>
+	<!-- ng-app是angular编程入口，是模块作用域  -->
+	<body ng-app>
+		<div>
+			<!-- ng-model模型作用  -->
+			<input type="text" name="name1" ng-model="name" /><br>
+			<input type="text" name="name2" ng-model="name22" /><br>
+			<input type="text" name="name3" ng-model="name" /><br>
+			<input type="text" name="name4" ng-model="name" /><br>
+			<input type="text" name="name5" ng-model="name" /><br>
+			<input type="text" name="name6" ng-model="name" /><br>
+			<input type="text" name="name7" ng-model="name" /><br>
+		</div>
+		<div>
+			Hello, {{name}}
+		</div>
+	</body>
+</html>

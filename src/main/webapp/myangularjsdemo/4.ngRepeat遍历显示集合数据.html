@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-app="myapp" ng-controller="myctrl">
+			<table width="80%" border="1" align="center">
+				<tr>
+					<th>序号</th>
+					<th>商品编号</th>
+					<th>商品名称</th>
+					<th>价格</th>
+				</tr>
+				<tr ng-repeat="product in products">
+					<td>{{$index+1}}</td>
+					<td>{{product.id}}</td>
+					<td>{{product.name}}</td>
+					<td>{{product.price}}</td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript">
+			//初始化myapp模块
+			var myapp=angular.module("myapp",[]);
+			//自定义模块控制器, 依赖注入, $scope作用域对象, 操作当前作用域的视图
+			myapp.controller("myctrl",["$scope",function($scope){
+				$scope.products=[
+					{
+						id:1001,
+						name:'数码相机',
+						price:3000
+					},
+					{
+						id:1002,
+						name:'苹果手机',
+						price:7900
+					},{
+						id:1003,
+						name:'水果生鲜',
+						price:60.2
+					}
+				]
+			}])
+		</script>
+		
+	</body>
+</html>

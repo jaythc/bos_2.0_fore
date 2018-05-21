@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <script src="../js/angular-route.min.js" type="text/javascript"></script>
+</head>
+<body>
+	
+	<div ng-app="myapp" ng-controller="myctrl">
+    <input type="text" name="name" ng-model="name">{{name}}<br/>
+    <input type="text" name="age" ng-model="age">{{age}}
+    <button type="button" ng-click="clearVal()">清空</button>
+</div>
+
+<div id="appDiv" ng-app="app" ng-controller="appctrl">
+    <table border="1px">
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+        </tr>
+        <tr ng-repeat="person in persons">
+            <td>{{$index}}</td>
+            <td>{{person.name}}</td>
+            <td>{{person.age}}</td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+</body>
+<script>
+	var myapp = angular.module("myapp", []);
+	myapp.controller("myctrl", ["$scope", function (abc) {
+		abc.name = "张三";
+		abc.age = "18";
+		abc.clearVal = function () {
+			abc.name = "";
+			abc.age = "";
+		}
+	}]);
+	
+	
+	var app = angular.module("app", []);
+	app.controller("appctrl", ["$scope", function (scope) {
+		scope.persons = [
+			{
+				name: "张三",
+				age: 18
+			},
+			{
+				name: "李四",
+				age: 20
+			}
+		];
+	}]);
+
+	angular.bootstrap(document.getElementById("appDiv"), ['app']);
+</script>
+</html>

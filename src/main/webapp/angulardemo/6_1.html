@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>BootStrap静态分页效果 </title>
+		<link rel="stylesheet" href="../css/bootstrap/bootstrap.css" />
+	</head>
+
+	<body>
+		<table class="table table-bordered">
+			<tr>
+				<th>序号</th>
+				<th>商品编号</th>
+				<th>名称</th>
+				<th>价格</th>
+			</tr>
+			<tr ng-repeat="product in products">
+				<td>1</td>
+				<td>1001</td>
+				<td>冰箱</td>
+				<td>2000</td>
+			</tr>
+		</table>
+		<div>
+			<ul class="pagination pull-right">
+				<li>
+					<a href>上一页</a>
+				</li>
+				<li>
+					<a>1</a>
+					<a>2</a>
+					<a>3</a>
+				</li>
+				<li>
+					<a href>下一页</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+	</head>
+	<body ng-app>
+		<div ng-app="myapp" ng-controller="myctrl">
+			<div>
+				<input name="name" ng-model="name" />
+			</div>
+			<div>
+				hello,{{name}}
+			</div>			
+		</div>
+		
+		<script type="text/javascript">
+			//初始化myapp模块
+			var myapp=angular.module("myapp",[]);
+			
+			//自定义模块控制器, 依赖注入, $scope作用域对象, 操作当前作用域的视图
+			myapp.controller("myctrl",["$scope",function($scope){
+				$scope.name="程序员";
+			}])
+		</script>
+		
+	</body>
+</html>

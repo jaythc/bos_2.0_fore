@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+	<script type="text/javascript" src="../js/angular-route.min.js"></script>
+	</head>
+	<body>
+		<div ng-app="myapp" >
+			<div>
+				<h1> HEAD</h1>
+				<a href="#/JAVAEE1">JAVAEE</a>
+				<a href="#/IOS1">IOS</a>
+				<a href="#/Android1">Android</a>
+			</div>
+			
+			<div ng-view>
+				
+			</div>
+			
+			<div>
+				<h1> FOOT</h1>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//初始化myapp模块
+			var myapp=angular.module("myapp",["ngRoute"]);
+			
+			//配置模块路由
+			myapp.config(["$routeProvider",function(myroute){
+				myroute
+					.when('/JAVAEE1',{
+						templateUrl:'5_1.html'
+					}).when('/IOS1',{
+						templateUrl:'5_2.html'
+					}).when('/Android1',{
+						templateUrl:'5_3.html'
+					}).otherwise({
+						redirectTo:'/JAVAEE1'
+					})
+			}])
+		</script>
+	</body>
+</html>
