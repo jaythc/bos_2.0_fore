@@ -39,7 +39,7 @@ public class PromotionAction extends BaseAction<Promotion> {
 	@Action(value = "promotion_pageQuery", results = { @Result(name = "success", type = "json") })
 	public String pageQuery() {
 		// 从后台工程获取 活动数据
-		PageBean<Promotion> pageBean = WebClient.create(Constants.BOS_MANAGEMENT_URL
+		PageBean<Promotion> pageBean = WebClient.create(Constants.BOS_MANAGEMENT_HOST
 				+ "/bos_management/services/promotionService/pageQuery?page=" + page + "&rows=" + rows)
 				.accept(MediaType.APPLICATION_JSON).get(PageBean.class);
 		ActionContext.getContext().getValueStack().push(pageBean);
@@ -56,7 +56,7 @@ public class PromotionAction extends BaseAction<Promotion> {
 	
 	// 测试活动详情的
 	public static void main(String[] args) {
-		Promotion promotion = WebClient.create(Constants.BOS_MANAGEMENT_URL
+		Promotion promotion = WebClient.create(Constants.BOS_MANAGEMENT_HOST
 				+ "/bos_management/services/promotionService/promotion/"+42)
 				.accept(MediaType.APPLICATION_JSON).get(Promotion.class);
 		System.out.println(promotion);
@@ -82,7 +82,7 @@ public class PromotionAction extends BaseAction<Promotion> {
 			Template template = configuration.getTemplate("promotion_detail.ftl");
 			
 			//  利用webService 获取动态的详情数据
-			Promotion promotion = WebClient.create(Constants.BOS_MANAGEMENT_URL
+			Promotion promotion = WebClient.create(Constants.BOS_MANAGEMENT_HOST
 					+ "/bos_management/services/promotionService/promotion/"+model.getId())
 					.accept(MediaType.APPLICATION_JSON).get(Promotion.class);
 			
