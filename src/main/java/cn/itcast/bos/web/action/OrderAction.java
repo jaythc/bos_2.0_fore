@@ -10,7 +10,6 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
 import cn.itcast.bos.domain.base.Area;
 import cn.itcast.bos.domain.constant.Constants;
 import cn.itcast.bos.domain.take_delivery.Order;
@@ -34,7 +33,7 @@ public class OrderAction extends BaseAction<Order> {
 	public void setRecAreaInfo(String recAreaInfo) {
 		this.recAreaInfo = recAreaInfo;
 	}
-
+	
 	@Action(value = "order_add", results = { @Result(name = "success", type = "redirect", location = "index.html") })
 	public String add() {
 		// 手动封装area关联
@@ -57,12 +56,10 @@ public class OrderAction extends BaseAction<Order> {
 
 		model.setSendArea(sendArea);
 		model.setRecArea(recArea);
-
 		// 订单关联客户
 		// 从session 中 获取 客户
 		Customer customer = (Customer) ServletActionContext.getRequest().getSession().getAttribute("customer");
 		model.setCustomer_id(customer.getId());
-
 		// 调用webService 把订单信息传递到bos_management
 		WebClient.create(Constants.BOS_MANAGEMENT_URL + "/services/orderService/order").type(MediaType.APPLICATION_JSON)
 				.post(model);

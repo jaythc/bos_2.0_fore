@@ -86,7 +86,6 @@ public class PromotionAction extends BaseAction<Promotion> {
 					+ "/bos_management/services/promotionService/promotion/"+model.getId())
 					.accept(MediaType.APPLICATION_JSON).get(Promotion.class);
 			
-			
 			HashMap<String, Object> parameterMap = new HashMap<String,Object>();
 			parameterMap.put("promotion", promotion);
 			

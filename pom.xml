@@ -23,6 +23,15 @@
   			</configuration>
   		</plugin>
   	</plugins>
+
+      <!-- 默认源代码和资源文件目录配置 -->
+      <sourceDirectory>src/main/java</sourceDirectory>
+      <resources>
+          <resource>
+              <directory>src/main/resources</directory>
+          </resource>
+      </resources>
+
   </build>
   <dependencies>
   	<dependency>
@@ -36,4 +45,6 @@
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
+
+
 </project>

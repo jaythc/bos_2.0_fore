@@ -46,40 +46,31 @@ public class CustomerAction extends BaseAction<Customer> {
 	public String sendSms() {
 		// 生成随机的验证码
 		final String randomCode = RandomStringUtils.randomNumeric(4);
-
 		// 将短信验证码保存到session , 以便后面验证
 		ServletActionContext.getRequest().getSession().setAttribute(model.getTelephone(), randomCode);
 		System.err.println("生成的验证码为: " + randomCode);
 		// MQ生产者调用服务,队列 发送短信
-
 		jmsTemplate.send("bos_sms", new MessageCreator() {
-
 			@Override
 			public Message createMessage(Session session) throws JMSException { // 建立一个Map类型的
-																				// 会话,
-																				// 存入电话和要发送的信息
 				MapMessage mapMessage = session.createMapMessage(); // 存入电话
 				mapMessage.setString("telephone", model.getTelephone()); // 存入随机的验证码
 				mapMessage.setString("randomCode", randomCode);
 				return mapMessage;
 			}
 		});
-
 		return NONE;
 	}
-
 	// 属性驱动, 获取验证码
 	private String checkCode;
-
 	public void setCheckCode(String checkCode) {
 		this.checkCode = checkCode;
 	}
-
 	// 注入RedisTemplate处理激活邮件
 	@Autowired
 	private RedisTemplate<String, String> redisTemplate;
 
-	// 用户注册的方法
+	// 用户注册绑定邮箱   的方法
 	@Action(value = "customer_regist", results = {
 			@Result(name = "success", type = "redirect", location = "signup-success.html"),
 			@Result(name = "input", type = "redirect", location = "signup.html") })
